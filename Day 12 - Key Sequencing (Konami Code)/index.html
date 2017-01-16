@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Key Detection</title>
+</head>
+
+<body>
+    <h1 style="text-align: center;">What's the password?</h1>
+    <script>
+        const pressedArray = [];
+        const code = 'sean';
+
+        window.addEventListener('keyup', (e) => {
+          pressedArray.push(e.key);
+          pressedArray.splice(-code.length - 1, pressedArray.length - code.length);
+          console.log(pressedArray);
+          if (pressedArray.join('') === code) {
+            alert('Welcome!');
+          }
+        });
+    </script>
+</body>
+
+</html>
