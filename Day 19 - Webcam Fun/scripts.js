@@ -65,4 +65,4 @@ function rgbSplit(pixels) {
 
 getVideo();
 
-video.addEventListener('canplay', paintToCanvas)
+video.addEventListener('canplay', paintToCanvas);
