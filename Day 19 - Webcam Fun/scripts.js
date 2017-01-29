@@ -25,7 +25,7 @@ function paintToCanvas() {
     ctx.drawImage(video, 0, 0, width, height);
     let pixels = ctx.getImageData(0, 0, width, height);
     // Get the pixels, run effects
-    pixels = redEffect(pixels);
+    // pixels = redEffect(pixels);
     // pixels = rgbSplit(pixels);
     // Put it back into the canvas element
     ctx.putImageData(pixels, 0, 0);
