@@ -3,16 +3,8 @@ const canvas = document.querySelector('.photo');
 const ctx = canvas.getContext('2d');
 const strip = document.querySelector('.strip');
 const snap = document.querySelector('.snap');
-var toggleRed = false;
-var toggleSplitter = false;
-
-function toggleRed() {
-  toggleRed = !toggleRed;
-}
-
-function toggleSpitter() {
-  toggleSplitter = !toggleSplitter;
-}
+var red = false;
+var splitter = false;
 
 function getVideo() {
   navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then((localMediaStream) => {
@@ -30,8 +22,6 @@ function paintToCanvas() {
   const height = video.videoHeight;
   canvas.width = width;
   canvas.height = height;
-  let red = toggleRed;
-  let splitter = toggleSplitter;
 
   return setInterval(() => {
     ctx.drawImage(video, 0, 0, width, height);
@@ -41,7 +31,7 @@ function paintToCanvas() {
       pixels = redEffect(pixels);
     }
     if (splitter == true) {
-      pixels = rgbSplitter(pixels);
+      pixels = rgbSplit(pixels);
     }
     // Put it back into the canvas element
     ctx.putImageData(pixels, 0, 0);
@@ -59,6 +49,14 @@ function takePhoto() {
   link.setAttribute('download', 'handsome');
   link.innerHTML = `<img src=${data} alt="handsome photo"/>`;
   strip.insertBefore(link, strip.firstChild);
+}
+
+function toggleRed() {
+  red = !red;
+}
+
+function toggleSplitter() {
+  splitter = !splitter;
 }
 
 function redEffect(pixels) {
